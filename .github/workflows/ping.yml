@@ -2,8 +2,8 @@ name: Keep Streamlit Apps Awake
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Runs every 10 minutes
-  workflow_dispatch:  # Allows manual trigger from GitHub
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
 
 jobs:
   ping-apps:
@@ -32,7 +32,3 @@ jobs:
       
       - name: Show completion time
         run: echo "All apps pinged at $(date)"
-
-**When creating the file, the path should show:**
-```
-keep-streamlit-awake / .github / workflows / ping.yml

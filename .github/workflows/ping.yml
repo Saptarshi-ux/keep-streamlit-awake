@@ -1,0 +1,38 @@
+name: Keep Streamlit Apps Awake
+
+on:
+  schedule:
+    - cron: '*/60 * * * *'  # Runs every 60 minutes
+  workflow_dispatch:  # Allows manual trigger from GitHub
+
+jobs:
+  ping-apps:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Fake News Detector
+        run: |
+          echo "Pinging Fake News Detector..."
+          curl -I https://fake-news-detector-saptarshi-1729.streamlit.app || echo "App 1 ping failed"
+      
+      - name: Ping Background Remover
+        run: |
+          echo "Pinging Background Remover..."
+          curl -I https://ai-enabled-background-remover-app-by-saptarshi-bandyopadhyay.streamlit.app || echo "App 2 ping failed"
+      
+      - name: Ping Chart Generator
+        run: |
+          echo "Pinging Chart Generator..."
+          curl -I https://chart-automation-saptarshi-ban.streamlit.app || echo "App 3 ping failed"
+      
+      - name: Ping Cover Letter Generator
+        run: |
+          echo "Pinging Cover Letter Generator..."
+          curl -I https://ai-based-coverletter-by-saptarshi.streamlit.app || echo "App 4 ping failed"
+      
+      - name: Show completion time
+        run: echo "All apps pinged at $(date)"
+
+**When creating the file, the path should show:**
+```
+keep-streamlit-awake / .github / workflows / ping.yml
